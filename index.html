@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,44 +8,46 @@
   </head>
   <body>
     <!--portfolio sections-->
-    <!--Game-->
-    <div class="image-container">
-      <a href="game.html" target="_blank">
-        <img src="Arc1.png" alt="Arc1" class="arc1" />
-        <span class="label1"> Game design </span>
-      </a>
-    </div>
+    <div class="parent-container">
+      <!--Game-->
+      <div class="image-container">
+        <a href="book.html">
+          <img src="Arc1.png" alt="Arc1" class="arc1" />
+          <span class="label1"> Editorial </span>
+        </a>
+      </div>
 
-    <!--Re-branding-->
-    <div class="image-container">
-      <a href="re-brand.html" target="_blank">
-        <img src="Arc2.png" alt="Arc2" class="arc2" />
-        <span class="label2"> Re-branding </span>
-      </a>
-    </div>
+      <!--Re-branding-->
+      <div class="image-container">
+        <a href="re-brand.html">
+          <img src="Arc2.png" alt="Arc2" class="arc2" />
+          <span class="label2"> Branding </span>
+        </a>
+      </div>
 
-    <!--Book design-->
-    <div class="image-container">
-      <a href="Book.html" target="_blank">
-        <img src="Arc3 .png" alt="Arc3" class="arc3" />
-        <span class="label3"> Book Design </span>
-      </a>
-    </div>
+      <!--Book design-->
+      <div class="image-container">
+        <a href="game.html">
+          <img src="Arc3.png" alt="Arc3" class="arc3" />
+          <span class="label3"> Game design </span>
+        </a>
+      </div>
 
-    <!--Logo-->
-    <div class="image-container">
-      <a href="Logo design.html" target="_blank">
-        <img src="Arc4.png" alt="Arc4" class="arc4" />
-        <span class="label4"> Logo Design </span>
-      </a>
-    </div>
+      <!--Logo-->
+      <div class="image-container">
+        <a href="Logo design.html">
+          <img src="Arc4.png" alt="Arc4" class="arc4" />
+          <span class="label4"> Logo Design </span>
+        </a>
+      </div>
 
-    <!--Narrative building-->
-    <div class="image-container">
-      <a href="Narrative.html" target="_blank">
-        <img src="Arc5.png" alt="Arc5" class="arc5" />
-        <span class="label5"> Narrative Building </span>
-      </a>
+      <!--Visual Storytelling-->
+      <div class="image-container">
+        <a href="Narrative.html">
+          <img src="Arc5.png" alt="Arc5" class="arc5" />
+          <span class="label5"> Visual Storytelling </span>
+        </a>
+      </div>
     </div>
     <div class="content">
       <h1>HELLO!!</h1>
@@ -79,32 +81,8 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        Contact Me
+        Let's Connect
       </a>
-    </div>
-
-    <!--apps-->
-    <div class="apps-container">
-      <div class="apps">
-        <img src="photoshop .png" alt="apps" />
-      </div>
-
-      <div class="apps">
-        <img src="illustrator.png" alt="apps" />
-      </div>
-
-      <div class="apps">
-        <img src="indesign.png" alt="apps" />
-      </div>
-      <div class="apps">
-        <img src="figma.png" alt="apps" />
-      </div>
-      <div class="apps">
-        <img src="lens studio.png" alt="apps" />
-      </div>
-      <div class="apps">
-        <img src="premiere.png" alt="apps" />
-      </div>
     </div>
 
     <!--taskbar-->
@@ -193,5 +171,42 @@
         </svg>
       </a>
     </div>
+    <div class="mobile-warning">
+      <div class="mobile-box">
+        <h2>Best viewed on Desktop</h2>
+        <p>
+          This experience is designed for larger screens.<br />
+          Please open on a laptop or desktop for the best view.
+        </p>
+      </div>
+    </div>
   </body>
+
+  <script>
+    const container = document.querySelector(".parent-container");
+
+    let angle = 0;
+    let autoSpeed = 0.2; // auto rotation speed
+    let scrollInfluence = 0;
+
+    // AUTO ROTATION LOOP
+    function rotateArc() {
+      angle += autoSpeed + scrollInfluence;
+
+      // slowly reduce scroll effect (smooth easing)
+      scrollInfluence *= 0.9;
+
+      container.style.transform = `rotate(${angle}deg)`;
+
+      requestAnimationFrame(rotateArc);
+    }
+
+    rotateArc();
+
+    // SCROLL CONTROL
+    window.addEventListener("wheel", (e) => {
+      // scroll up = reverse, scroll down = forward
+      scrollInfluence += e.deltaY * 0.01;
+    });
+  </script>
 </html>

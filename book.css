@@ -6,15 +6,15 @@
 body {
   height: 100vh;
 
-  background: radial-gradient(circle at left, #ed8455, #3a1909);
+  background: radial-gradient(circle at left, #F5F2E8, #e8dbc6);
 }
 
 .nav-bar {
   /*debugging
   border: #f3d9db 5px solid;*/
-  width: 100%;
+  width: 100% ;
   height: 60px;
-  background-color: rgba(132, 81, 58, 0.8);
+  background-color: rgba(192, 186, 176, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@ body {
 }
 .nav-bar a {
   font-family: "jockey one", sans-serif;
-  color: #ffba9c;
+  color: #323030;
   text-decoration: none;
   font-size: 1.2rem;
 }
@@ -43,10 +43,10 @@ a:hover {
   text-align: center;
   align-items: center;
   height: 150px;
-  background-color: rgba(71, 43, 30, 0.8);
+  background-color: rgba(124, 120, 118, 0.8);
   font-family: "jockey one", sans-serif;
   border-radius: 20px;
-  color: #d08d6e;
+  color:#bebdbd;
   font-size: 4rem;
   padding-top: 20px;
   margin-left: 25%;
@@ -67,13 +67,11 @@ a:hover {
 }
 .all {
   /*debugging
-  border: #f3d9db 2px solid;*/
+  /* border: #cd2c3a 2px solid;*/
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 50px;
-  padding-top: 20px;
-  margin-top: 40%;
+  margin-top: 25%;
 }
 
 .intro-section {
@@ -84,9 +82,9 @@ a:hover {
   width: 100%;
   padding-left: 200px;
   padding-right: 200px;
-  font-family: jockey one, sans-serif;
+  font-family:'Times New Roman', Times, serif;
   text-align: center;
-  color: #d08d6e;
+  color: rgba(148, 142, 140, 0.8);
   height: 90%;
 }
 .container {
@@ -97,24 +95,22 @@ a:hover {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
   margin: 0 auto;
-  padding: 40px 0;
-  margin-top: 0%;
+  padding: 10px 0;
 }
 .reverse {
   flex-direction: row-reverse;
-  margin-top: 300px;
+  margin-top: 100px;
 }
 
 .content {
   max-width: 550px;
 }
 h1 {
-  font-family: "jockey one", sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 6rem;
   margin: 0;
-  color: #d08d6e;
+  color: #efeded;
 }
 .image-container {
   /*debugging
@@ -131,13 +127,12 @@ p {
   margin-top: 1.5rem;
   opacity: 0.8;
   font-size: 2rem;
-  color: #f5b79a;
+  color:#323030;
 }
 h2 {
-  font-family: "jockey one", sans-serif;
-  margin-top: 0.5rem;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 3rem;
-  color: #f5b79a;
+  color: #323030;
 }
 .image-container img {
   width: 100%;
@@ -155,8 +150,8 @@ h2 {
   align-items: center;
 }
 .image-container1 img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: contain;
 }
 .taskbar {

@@ -71,14 +71,15 @@ a:hover {
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: 50px;
+ 
   padding-top: 20px;
-  margin-top: 40%;
+  margin-top: 25%;
 }
 
 .intro-section {
   /*debugging
-  border: #ffaeb1 2px solid;*/
+   border: #ffaeb1 2px solid;*/
+
 
   align-items: center;
   width: 100%;
@@ -87,7 +88,7 @@ a:hover {
   font-family: jockey one, sans-serif;
   text-align: center;
   color: #425139;
-  height: 90%;
+  height: 80%;
 }
 .container {
   /*debugging
@@ -104,7 +105,7 @@ a:hover {
 }
 .reverse {
   flex-direction: row-reverse;
-  margin-top: 300px;
+  margin-top: 190px;
 }
 
 .content {
