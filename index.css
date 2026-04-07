@@ -7,231 +7,22 @@
 body {
   margin: 0;
   height: 100vh;
+  /* overflow: hidden; */
   background: radial-gradient(circle at left, #300060, #110101);
   font-family: Arial, Helvetica, sans-serif;
   color: thistle;
 }
-.image-container:hover {
-  transform: scale(1.05);
-  filter: brightness(1.3);
-  cursor: pointer;
-}
+
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* desktop*/
-@media only screen and (min-width: 1025px) {
-  h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 3rem;
-    margin: 0;
-  }
-  body {
-    overflow: hidden;
-  }
-  .image-container:hover {
-    transform: scale(1.05);
-    filter: brightness(1.3);
-    cursor: pointer;
-  }
-  h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 0.5rem;
-    font-size: 4rem;
-  }
-
-  p {
-    font-family: "jockey one", sans-serif;
-    margin-top: 1.5rem;
-    opacity: 0.8;
-    font-size: 1rem;
-  }
-
-  .content {
-    position: absolute;
-    top: 15%;
-    left: 5%;
-    max-width: 550px;
-  }
-  .taskbar {
-    width: 100%;
-    height: 50px;
-    background: whitesmoke;
-    opacity: 0.4;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 100px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-  }
-  .parent-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-origin: 94% 110%; /* tweak this */
-  }
-  .parent-container::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: red;
-    border-radius: 50%;
-    left: 94%;
-    top: 110%;
-    transform: translate(-50%, -50%);
-  }
-
-  .image-container {
-    position: absolute;
-    top: 30%;
-    right: 0%;
-    width: 60%;
-    height: auto;
-    transform-origin: center;
-    transition:
-      transform 0.3s ease,
-      filter 0.3s ease;
-  }
-  img {
-    width: 200px;
-    height: auto;
-  }
-  img.arc1 {
-    position: absolute;
-    top: 0px;
-    right: -8%;
-    width: 600px;
-    height: auto;
-  }
-  img.arc2 {
-    position: absolute;
-    top: 300px;
-    right: 310px;
-    width: 430px;
-    height: auto;
-  }
-
-  img.arc3 {
-    position: absolute;
-    top: 810px;
-    right: -70px;
-    width: 590px;
-    height: auto;
-  }
-  img.arc4 {
-    position: absolute;
-    top: 570px;
-    right: -500px;
-    width: 440px;
-    height: auto;
-  }
-  img.arc5 {
-    position: absolute;
-    top: 50px;
-    right: -490px;
-    width: 440px;
-    height: auto;
-  }
-
-  .label1 {
-    position: absolute;
-    top: 190px;
-    right: 21%;
-    font-size: 2rem;
-    transform: rotate(-20deg);
-  }
-  .label2 {
-    position: absolute;
-    top: 660px;
-    right: 490px;
-    font-size: 2rem;
-    transform: rotate(-90deg);
-  }
-  .label3 {
-    position: absolute;
-    top: 1060px;
-    right: 130px;
-    font-size: 2rem;
-    transform: rotate(-160deg);
-  }
-  .label4 {
-    position: absolute;
-    top: 890px;
-    right: -390px;
-    font-size: 2rem;
-    transform: rotate(-235deg);
-  }
-  .label5 {
-    position: absolute;
-    top: 370px;
-    right: -420px;
-    font-size: 2rem;
-    transform: rotate(-305deg);
-  }
-  .contact-btn {
-    width: 290px;
-    height: 70px;
-    margin-top: 20px;
-    display: inline-block;
-    padding: 17px 30px;
-    background: radial-gradient(circle at left, #140429, #300060);
-    opacity: 1;
-    font-size: 2rem;
-    font-weight: 600;
-    border-radius: 9px;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: 0.3s ease;
-  }
-
-  .contact-btn:hover {
-    background: whitesmoke;
-    opacity: 0.7;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    color: #140429;
-  }
-  .apps-container {
-    /* debugging */
-
-    top: 100%;
-    left: 50px;
-    width: 30%;
-    height: 400px;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 20px;
-    padding-right: 70px;
-    flex-wrap: wrap;
-  }
-  .apps {
-    width: 45px;
-    height: 45px;
-    border-radius: 7px;
-    display: flex;
-  }
-
-  img.apps {
-    width: 90%;
-    height: 90%;
-    object-fit: contain;
-  }
-}
-
+/* ─── Mobile warning ─────────────────────────────────────── */
 .mobile-warning {
   display: none;
 }
 
-/* show only on small screens */
 @media (max-width: 1024px) {
   .mobile-warning {
     background-color: #300060;
@@ -251,8 +42,278 @@ a {
     max-width: 300px;
   }
 
-  /* disable interaction behind */
   body > *:not(.mobile-warning) {
     display: none;
+  }
+}
+
+/* ─── Desktop layout ─────────────────────────────────────── */
+@media only screen and (min-width: 1025px) {
+  /* Left-side content — fixed so it never clips */
+  .content {
+    position: fixed;
+    top: 15vh;
+    left: 5vw;
+    max-width: min(500px, 36vw);
+    z-index: 10;
+  }
+
+  h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    margin: 0;
+  }
+
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 0.5rem;
+    font-size: clamp(2rem, 4vw, 4rem);
+  }
+
+  p {
+    font-family: "jockey one", sans-serif;
+    margin-top: 1.5rem;
+    opacity: 0.8;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+  }
+
+  .contact-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 17px 30px;
+    width: clamp(200px, 23vw, 290px);
+    height: 60px;
+    background: radial-gradient(circle at left, #140429, #300060);
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-weight: 600;
+    border-radius: 9px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+  }
+
+  .contact-btn:hover {
+    background: whitesmoke;
+    opacity: 0.7;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    color: #140429;
+  }
+
+  /* Taskbar */
+  .taskbar {
+    width: 100%;
+    height: 50px;
+    background: whitesmoke;
+    opacity: 0.4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+  }
+
+  /* ─── Wheel viewport ─────────────────────────────────── */
+  /*
+   * .wheel-viewport is a zero-size fixed anchor.
+   * JS moves its top/left so the wheel's true center
+   * always lands at (94vw, 110vh) in screen space.
+   * overflow: visible lets child elements paint outside it.
+   */
+  .wheel-viewport {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .wheel-viewport * {
+    pointer-events: auto;
+  }
+
+  /*
+   * .parent-container is the DESIGN CANVAS.
+   * Its dimensions match the 1440×900 reference screen.
+   * transform-origin uses absolute px so the rotation pivot
+   * is always the same physical point regardless of scale.
+   *
+   * 1353px = 94% × 1440   (original transform-origin X)
+   *  990px = 110% × 900   (original transform-origin Y)
+   *
+   * JS applies:  scale(S) rotate(Rdeg)  around that point.
+   * JS positions .wheel-viewport so the pivot appears at
+   * (0.94×vw, 1.10×vh) on screen.
+   */
+  .parent-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1440px;
+    height: 900px;
+    overflow: visible;
+    /* transform-origin and transform set by JS */
+    transform-origin: 1353px 990px;
+  }
+
+  /* ─── image-containers ───────────────────────────────── */
+  /*
+   * All five image-containers share the same anchor:
+   *   top  = 30% × 900px = 270px
+   *   left = 40% × 1440px = 576px   (right:0 + width:60%)
+   *   width = 60% × 1440px = 864px
+   * Converted to fixed px so they don't shift with viewport.
+   */
+  .image-container {
+    position: absolute;
+    top: 270px;
+    left: 576px;
+    width: 864px;
+    height: auto;
+    overflow: visible;
+    transition:
+      transform 0.3s ease,
+      filter 0.3s ease;
+  }
+
+  .image-container:hover {
+    transform: scale(1.05);
+    filter: brightness(1.3);
+    cursor: pointer;
+  }
+
+  /* ─── Arc images ─────────────────────────────────────── */
+  /*
+   * Positions converted from right-based to left-based
+   * using:  left = containerWidth − right − imgWidth
+   * containerWidth = 864px (image-container)
+   */
+
+  /* arc1: right:-8%=-69px → left = 864+69−600 = 333px */
+  img.arc1 {
+    position: absolute;
+    top: 0px;
+    left: 333px;
+    width: 600px;
+    height: auto;
+  }
+
+  /* arc2: right:310px → left = 864−310−430 = 124px */
+  img.arc2 {
+    position: absolute;
+    top: 300px;
+    left: 124px;
+    width: 430px;
+    height: auto;
+  }
+
+  /* arc3: right:-70px → left = 864+70−590 = 344px */
+  img.arc3 {
+    position: absolute;
+    top: 810px;
+    left: 344px;
+    width: 590px;
+    height: auto;
+  }
+
+  /* arc4: right:-500px → left = 864+500−440 = 924px */
+  img.arc4 {
+    position: absolute;
+    top: 570px;
+    left: 924px;
+    width: 440px;
+    height: auto;
+  }
+
+  /* arc5: right:-490px → left = 864+490−440 = 914px */
+  img.arc5 {
+    position: absolute;
+    top: 50px;
+    left: 914px;
+    width: 440px;
+    height: auto;
+  }
+
+  /* ─── Labels ─────────────────────────────────────────── */
+  /* Converted right:21% (of 864px = 181px) to right:181px */
+  .label1 {
+    position: absolute;
+    top: 190px;
+    right: 181px;
+    font-size: 2rem;
+    transform: rotate(-20deg);
+  }
+
+  .label2 {
+    position: absolute;
+    top: 660px;
+    right: 490px;
+    font-size: 2rem;
+    transform: rotate(-90deg);
+  }
+
+  .label3 {
+    position: absolute;
+    top: 1060px;
+    right: 130px;
+    font-size: 2rem;
+    transform: rotate(-160deg);
+  }
+
+  .label4 {
+    position: absolute;
+    top: 890px;
+    right: -390px;
+    font-size: 2rem;
+    transform: rotate(-235deg);
+  }
+
+  .label5 {
+    position: absolute;
+    top: 370px;
+    right: -420px;
+    font-size: 2rem;
+    transform: rotate(-305deg);
+  }
+
+  /* General img fallback */
+  img {
+    width: 200px;
+    height: auto;
+  }
+
+  /* Apps container (if used) */
+  .apps-container {
+    top: 100%;
+    left: 50px;
+    width: 30%;
+    height: 400px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-right: 70px;
+    flex-wrap: wrap;
+  }
+
+  .apps {
+    width: 45px;
+    height: 45px;
+    border-radius: 7px;
+    display: flex;
+  }
+
+  img.apps {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
   }
 }
