@@ -184,12 +184,7 @@
     const viewport = document.querySelector(".wheel-viewport");
     const container = document.querySelector(".parent-container");
 
-    // ── Reference design dimensions (1440×900 screen) ──────────────────
-    // The wheel's true center was at transform-origin: 94% 110%
-    //   94%  × 1440px = 1353px  (CENTER_X)
-    //   110% × 900px  =  990px  (CENTER_Y)
-    // But because 110% of a SHORTER viewport puts the center much lower,
-    // we anchor targetY as a fixed offset below the viewport bottom instead.
+    // ── Reference design (your original screen) ─────────────────────────
     const CENTER_X = 1380;
     const CENTER_Y = 1090;
     const REF_W = 1440;
@@ -200,44 +195,62 @@
     let scrollInfluence = 0;
     let currentScale = 1;
 
-    // ── Reposition viewport anchor so center stays at consistent spot ────
-    function updateLayout() {
+    // ── Get stable viewport size (fixes deployed shift) ─────────────────
+    function getViewport() {
       const vw = window.innerWidth;
-      const vh = window.innerHeight;
 
-      // Scale down proportionally on smaller screens; never upscale past 1.5
-      currentScale = Math.min(vw / REF_W, vh / REF_H, 3);
+      const vh = window.visualViewport
+        ? window.visualViewport.height
+        : document.documentElement.clientHeight;
 
-      // Anchor the center a fixed 87px from the right edge
-      // and 90px below the bottom edge (same absolute gap the original
-      // had on a 1440×900 screen: 6% × 1440 = 86px, 10% × 900 = 90px).
+      return { vw, vh };
+    }
+
+    // ── Layout calculation ──────────────────────────────────────────────
+    function updateLayout() {
+      const { vw, vh } = getViewport();
+
+      // Better scaling (prevents over-scaling issues)
+      currentScale = Math.min(vw / REF_W, vh / REF_H, 1.2);
+
+      // Keep pivot fixed relative to screen
       const targetX = vw - 87;
       const targetY = vh + 90;
 
-      // Position viewport anchor so pivot (CENTER_X, CENTER_Y) hits (targetX, targetY)
       viewport.style.left = targetX - CENTER_X + "px";
       viewport.style.top = targetY - CENTER_Y + "px";
     }
 
-    // ── Animation loop: scale + rotate around the fixed pivot ──────────
+    // ── Animation loop ──────────────────────────────────────────────────
     function rotateArc() {
       angle += autoSpeed + scrollInfluence;
+
+      // Smooth decay for scroll
       scrollInfluence *= 0.9;
 
-      // Apply scale AND rotation together around transform-origin (1353px 990px)
       container.style.transform = `scale(${currentScale}) rotate(${angle}deg)`;
 
       requestAnimationFrame(rotateArc);
     }
 
-    updateLayout();
-    window.addEventListener("resize", updateLayout);
+    // ── Resize handling (stable) ────────────────────────────────────────
+    let resizeTimeout;
 
-    // Scroll → speed up / slow down rotation
+    function handleResize() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(updateLayout, 50);
+    }
+
+    window.addEventListener("resize", handleResize);
+    window.visualViewport?.addEventListener("resize", handleResize);
+
+    // ── Scroll interaction ──────────────────────────────────────────────
     window.addEventListener("wheel", (e) => {
-      scrollInfluence += e.deltaY * 0.01;
+      scrollInfluence += e.deltaY * 0.008; // slightly smoother
     });
 
+    // ── Init ────────────────────────────────────────────────────────────
+    updateLayout();
     rotateArc();
   </script>
 </html>
